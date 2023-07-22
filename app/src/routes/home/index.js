@@ -10,5 +10,7 @@ router.get('/calendar', ctrl.output.calendar);
 router.get('/join', ctrl.output.join);
 
 router.post('/login', ctrl.process.login);
+router.post('/join', ctrl.process.join);
+
 
 module.exports = router;

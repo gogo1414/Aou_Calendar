@@ -22,6 +22,11 @@ const process = {
         const response = user.login();
         return res.json(response);
     },
+    join: (req, res) => {
+        const user = new User(req.body);
+        const response = user.join();
+        return res.json(response);
+    },
 };
 
 module.exports = {
