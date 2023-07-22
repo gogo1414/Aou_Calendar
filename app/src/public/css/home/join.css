@@ -55,10 +55,13 @@ a{
     margin-bottom: 5px;
 }
 
-.member input[type=button],
-.member input[type=submit]{
-background-color: #6A24FE;
-color:#fff
+.member button{
+    background-color: #6A24FE;
+    color:#fff;
+    border: 1px solid #dadada;
+    padding: 15px;
+    width: 100%;
+    margin-bottom: 5px;
 }
 
 .member input:focus, .member select:focus{
@@ -74,24 +77,6 @@ color:#fff
     flex:1;
 } */
 
-.field.tel-number div {
-    display: flex;
-}
-
-.field.tel-number div input:nth-child(1){
-    flex:2;
-}
-
-.field.tel-number div input:nth-child(2){
-    flex:1;
-}
-
-.field.gender div{
-    border: 1px solid #dadada;
-    padding: 15px 5px;
-    background-color: #fff;
-}
-
 .placehold-text{
     display: block; /*span 으로 감싸서 크기영역을 블록요소로 만들어ㅜ저야한다*/
     position:relative;
@@ -104,23 +89,6 @@ color:#fff
     top:13px;
     pointer-events: none; /*자체가 가지고 있는 pointer event 를 없애준다 */
 }
-
-.userpw{
-    background:url(./images/images2/icon-01.png) no-repeat center right 15px;
-    background-size: 20px;
-    background-color: #fff;
-}
-
-.userpw-confirm{
-    background:url(./images/images2/icon-02.png) no-repeat center right 15px;
-    background-size: 20px;
-    background-color: #fff;
-}
-
-
-
-
-
 
 @media (max-width:768px) {
     .member{

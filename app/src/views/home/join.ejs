@@ -14,70 +14,55 @@
         <!-- 2. 필드 -->
         <div class="field">
             <b>아이디</b>
-            <span class="placehold-text"><input type="text"></span>
+            <span class="placehold-text"><input id="id" type="text"></span>
         </div>
         <div class="field">
             <b>비밀번호</b>
-            <input class="userpw" type="password">
+            <input id="psword" class="userpw" type="password">
         </div>
         <div class="field">
             <b>비밀번호 재확인</b>
-            <input class="userpw-confirm" type="password">
+            <input id="confirm-psword" class="userpw-confirm" type="password">
         </div>
         <div class="field">
             <b>이름</b>
-            <input type="text">
+            <input id="name" type="text">
         </div>
 
         <!-- 3. 필드(생년월일) -->
         <div class="field birth">
             <b>생년월일</b>
             <div>
-                <input type="number" placeholder="년(4자)">                
-                <select>
+                <input id="year" type="number" placeholder="년(4자)">                
+                <select id="month" type="submit">
                     <option value="">월</option>
-                    <option value="">1월</option>
-                    <option value="">2월</option>
-                    <option value="">3월</option>
-                    <option value="">4월</option>
-                    <option value="">5월</option>
-                    <option value="">6월</option>
-                    <option value="">7월</option>
-                    <option value="">8월</option>
-                    <option value="">9월</option>
-                    <option value="">10월</option>
-                    <option value="">11월</option>
-                    <option value="">12월</option>
+                    <option value="1">1월</option>
+                    <option value="2">2월</option>
+                    <option value="3">3월</option>
+                    <option value="4">4월</option>
+                    <option value="5">5월</option>
+                    <option value="6">6월</option>
+                    <option value="7">7월</option>
+                    <option value="8">8월</option>
+                    <option value="9">9월</option>
+                    <option value="10">10월</option>
+                    <option value="11">11월</option>
+                    <option value="12">12월</option>
                 </select>
-                <input type="number" placeholder="일">
+                <input id="day" type="number" placeholder="일">
             </div>
         </div>
 
-        <!-- 5. 이메일_전화번호 -->
+        <!-- 4. 이메일 -->
         <div class="field">
             <b>본인 확인 이메일<small>(선택)</small></b>
             <input type="email" placeholder="선택입력">
         </div>
-        
-        <div class="field tel-number">
-            <b>휴대전화</b>
-            <select>
-                <option value="">대한민국 +82</option>
-            </select>
-            <div>
-                <input type="tel" placeholder="전화번호 입력">
-                <input type="button" value="인증번호 받기">
-            </div>
-            <input type="number" placeholder="인증번호를 입력하세요">
-        </div>
 
-        <!-- 6. 가입하기 버튼 -->
-        <form method="get" action="/login" id="join-form" 
-        onclick="alert('회원가입에 성공하셨습니다! \n로그인 화면에서 재시도 해주세요.')">
-            <input type="submit" value="가입하기">
-        </form>
+        <!-- 5. 가입하기 버튼 -->
+        <button id="join-btn">가입하기</button>
         
     </div>
-
+    <script src="/js/home/join.js" defer></script>
 </body>
 </html>
