@@ -24,27 +24,31 @@ const process = {
     login: async (req, res) => {
         const user = new User(req.body);
         const response = await user.login();
-        if(response.err)
-            logger.error(`POST /login 200 Response: "success: ${response.success}, msg: ${response.err}"`);
-        else
-            logger.info(
-                `POST /login 200 Response: "success: ${response.success}, msg: ${response.msg}"`
-            );
-        return res.json(response);
+
+        // http 상태코드 중요하다고 합니다!
+        // 200, 300, 400, 500 각각 다 다르지만 그냥 400과 200을 사용
+        const url = {
+            method: "POST",
+            path: "/login",
+            status: response.err ? 400 : 200,
+        };
+
+        log(response, url);
+        return res.status(url.status).json(response);
     },
+
     join: async (req, res) => {
         const user = new User(req.body);
         const response = await user.join();
-        if(response.err)
-            logger.error(`POST /join 200 Response: "success: ${response.success}, msg: ${response.err}"`);
-        else
-            logger.info(
-                `POST /join 200 Response: "success: ${response.success}, msg: ${response.msg}"`
-            );
-        logger.info(
-            `POST /join 200 Response: "success: ${response.success}, msg: ${response.msg}"`
-        );
-        return res.json(response);
+        
+        const url = {
+            method: "POST",
+            path: "/join",
+            status: response.err ? 400 : 201, // err가 어떤 err인지를 알아야 에러코드 반환을 정확하게 할 수 있음.
+        };
+
+        log(response, url);
+        return res.status(url.status).json(response);
     },
 };
 
@@ -52,3 +56,13 @@ module.exports = {
     output,
     process,
 };
+
+const log = (response, url) => {
+    if(response.err) {
+            logger.error(`${url.method} ${url.path} ${url.status} Response: ${response.success} ${response.err}`);
+    }   else {
+        logger.info(
+            `${url.method} ${url.path} ${url. status} Response: ${response.success} ${response.msg || ""}`
+        );
+    }
+}
