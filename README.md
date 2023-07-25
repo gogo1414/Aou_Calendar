@@ -1,2 +1,6 @@
 ## Aou Calendar
-project
+
+before start server : change the path
+cd app
+npm install
+npm start
