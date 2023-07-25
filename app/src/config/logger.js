@@ -42,6 +42,10 @@ if (process.env.NODE_ENV !== "production") {
     logger.add(opts.console);
 }
 
+logger.stream = {
+    write: (message) => logger.info(message),
+};
+
 module.exports = logger;
 // 로그는 하루 단위로 관리하는게 맞음 npm winston daily
 // 머시기로 관리하기.
