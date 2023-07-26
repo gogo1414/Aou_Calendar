@@ -27,10 +27,10 @@ class User {
     async join() {
         const client = this.body;
         try {
-        const response = await UserStorage.save(client);
-        return response;
+            const response = await UserStorage.save(client);
+            return response;
         } catch (err) {
-            return { success: false, err};;
+            return { success: false, msg: "이미 존재하는 아이디입니다."};;
         }
     }
 }
