@@ -47,5 +47,4 @@ function join(){
     .catch((err) =>{ //라우터 연결 안될 때
         console.error(new Error("회원가입 중 오류 발생!"));
     });
-    
 }

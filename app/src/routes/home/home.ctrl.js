@@ -50,6 +50,20 @@ const process = {
         log(response, url);
         return res.status(url.status).json(response);
     },
+
+    chat: async (req, res) => {
+        const user = new User(req.body);
+        const response = await user.chat();
+        
+        const url = {
+            method: "POST",
+            path: "/calendar",
+            status: response.err ? 400 : 201, // err가 어떤 err인지를 알아야 에러코드 반환을 정확하게 할 수 있음.
+        };
+
+        log(response, url);
+        return res.status(url.status).json(response);
+    },
 };
 
 module.exports = {

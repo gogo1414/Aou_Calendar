@@ -11,6 +11,7 @@ router.get('/join', ctrl.output.join);
 
 router.post('/login', ctrl.process.login);
 router.post('/join', ctrl.process.join);
+router.post('/calendar', ctrl.process.chat);
 
 
 module.exports = router;

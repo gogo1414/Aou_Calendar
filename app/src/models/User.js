@@ -30,7 +30,16 @@ class User {
             const response = await UserStorage.save(client);
             return response;
         } catch (err) {
-            return { success: false, msg: "이미 존재하는 아이디입니다."};;
+            return { success: false, msg: "이미 존재하는 아이디입니다."};
+        }
+    }
+
+    async chat() {
+        const client = this.body;
+        try{
+            return {success: true};
+        } catch (err) {
+            return { success: false, msg: "메세지 전송에 실패했습니다."};
         }
     }
 }

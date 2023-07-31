@@ -7,7 +7,6 @@
     <link href="/css/home/calendar.css" rel="stylesheet">
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
     <script>
-
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
 
@@ -17,7 +16,7 @@
           height: 700,
           width: 800,
           headerToolbar: {
-            left: 'prev, today, next',
+            left: 'prev next today',
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
           },
@@ -54,7 +53,8 @@
               arg.event.remove();
             }
           },
-          
+          slotMinTime: '08:00', // Day 캘린더에서 시작 시간
+          slotMaxTime: '22:00', // Day 캘린더에서 종료 시간
 
 
 
@@ -68,12 +68,14 @@
 <body>
   <h1 class="title">Aou Calendar</h1>
   <div id="calendar" class="rap"></div>
-  <div class="chat">
-    <div class="message"></div>
+
+  <div id="chat-container">
+    <div id="chat-messages"></div>
     <div id="user-input">
-      <input type="text">
-      <button>전송</button>
+        <input type="text" placeholder="메시지를 입력하세요..." />
+        <button>전송</button>
     </div>
   </div>  
+<script src="/js/home/calendar.js"></script>
 </body>
 </html>
