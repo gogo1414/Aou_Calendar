@@ -1,3 +1,4 @@
+/*joincss*/
 /* Google web font CDN*/
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap');
 
@@ -9,7 +10,7 @@
 body{
     font-family: 'Noto Sans KR', sans-serif;
     font-size:14px;
-    background-color: #f5f6f7;
+    background-color: white;
     line-height: 1.5em;
     color : #222;
     margin: 0;
@@ -55,6 +56,9 @@ a{
     margin-bottom: 5px;
 }
 
+.join-btn {
+    cursor: pointer;
+}
 .member button{
     background-color: #6A24FE;
     color:#fff;
@@ -62,6 +66,7 @@ a{
     padding: 15px;
     width: 100%;
     margin-bottom: 5px;
+    cursor: pointer;
 }
 
 .member input:focus, .member select:focus{
