@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://github.com/JiyunElizabethYang/Smarcle-Farm/blob/main/KakaoTalk_20230804_152124244.png?raw=true"/>
     <title>Aou Callender</title>
     <link href="/css/home/calendar.css" rel="stylesheet">
     <script src='https://use.fontawesome.com/releases/v5.0.13/js/all.js'></script>
@@ -34,7 +35,7 @@
           },
           eventRemove: function(obj){ // 이벤트가 삭제되면 발생하는 이벤트
             console.log(obj);
-          },
+          },  
           select: function(arg) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
             var title = prompt('일정 추가:');
             if (title) {
@@ -55,9 +56,25 @@
           },
           slotMinTime: '08:00', // Day 캘린더에서 시작 시간
           slotMaxTime: '22:00', // Day 캘린더에서 종료 시간
-
+          events: function(info, successCallback, failureCallback) {
+            let eventsArr = [];
+            
+            let newevent = {
+              title: 'Long Event',
+              start: '2023-07-07',
+              end: '2023-07-10'
+              };
+            
+            console.log(jsonArray[0]);
+            
+            for (var i = 0; i < cnt; i++){
+              eventsArr.push(
+              jsonArray[i],
+              );
+            }
+            successCallback(eventsArr);
+          }
         });
-
         calendar.render();
       });
 
@@ -66,8 +83,9 @@
 <body style="height: 900px;">
   <div>
     <h1 class="scroll_01">
-      <img src = "https://github.com/JiyunElizabethYang/Smarcle-Farm/blob/main/AOU%20calendar%20logo.png?raw=true" style="width:375px; height: 75px; display:block; margin-top: -100px;">  
-    </h1>
+      <img src = "https://github.com/JiyunElizabethYang/Smarcle-Farm/blob/main/AOU%20calendar%20logo.png?raw=true" style="width:400px; height: 75px; display:block; margin-top: -100px;">  
+      <a href="/logout" style="float:right">Logout</a>
+      </h1>
     <div id="calendar" class="rap">
     </div>
   </div>
@@ -82,7 +100,7 @@
       <div class="msg left-msg">
         <div
          class="msg-img"
-         style="background-image: url(https://github.com/JiyunElizabethYang/Smarcle-Farm/blob/main/AOU%20calendar%20logo.png?raw=true)"
+         style="background-image: url(https://github.com/JiyunElizabethYang/Smarcle-Farm/blob/main/Ultron%20image.png?raw=true)"
         ></div>
         <div class="msg-bubble">
           <div class="msg-info">
@@ -98,7 +116,7 @@
       <div class="msg right-msg">
         <div
          class="msg-img"
-         style="background-image: url(https://github.com/JiyunElizabethYang/Smarcle-Farm/blob/main/%EC%83%81%EC%99%84%EC%9D%B4%20%EC%95%84%EC%9D%B4%EC%BD%98.jpg?raw=true)"
+         style="background-image: url(https://github.com/JiyunElizabethYang/Smarcle-Farm/blob/main/%EB%8F%84%ED%86%A0%EB%A6%AC.jpg?raw=true)"
         ></div>
   
         <div class="msg-bubble">

@@ -10,14 +10,30 @@ const output = {
     },
 
     calendar: (req, res) => {
-        logger.info(`Get /calendar 200 "메인 화면으로 이동"`);
-        res.render("home/calendar");
+        if(authStatus(req, res)){
+            logger.info(`Get /calendar 200 "메인 화면으로 이동"`);
+            res.render("home/calendar");
+        } else {
+            logger.info(`Get /login 200 "로그인 화면으로 이동"`);
+            res.redirect("/login");
+        }
     },
 
     join: (req, res) => {
         logger.info(`Get /join 200 "회원가입 화면으로 이동"`);
         res.render("home/join");
     },
+
+    logout: (req,res) =>{
+        req.session.destroy((err) => {
+            if(err){
+                console.log("세션 삭제에 오류 존재");
+                return;
+            }
+            logger.info('Get /logout 200 "로그아웃 중입니다."')
+            res.redirect("/login");
+        })
+    }
 };
 
 const process = {
@@ -25,14 +41,17 @@ const process = {
         const user = new User(req.body);
         const response = await user.login();
 
-        // http 상태코드 중요하다고 합니다!
-        // 200, 300, 400, 500 각각 다 다르지만 그냥 400과 200을 사용
+        if(req.session.is_logined){
+            console.log("이미 로그인 상태입니다.");
+        } else {
+            req.session.is_logined = true;
+            req.session.user_id = response.id;
+        }
         const url = {
             method: "POST",
             path: "/login",
             status: response.err ? 400 : 200,
         };
-
         log(response, url);
         return res.status(url.status).json(response);
     },
@@ -44,20 +63,6 @@ const process = {
         const url = {
             method: "POST",
             path: "/join",
-            status: response.err ? 400 : 201, // err가 어떤 err인지를 알아야 에러코드 반환을 정확하게 할 수 있음.
-        };
-
-        log(response, url);
-        return res.status(url.status).json(response);
-    },
-
-    chat: async (req, res) => {
-        const user = new User(req.body);
-        const response = await user.chat();
-        
-        const url = {
-            method: "POST",
-            path: "/calendar",
             status: response.err ? 400 : 201, // err가 어떤 err인지를 알아야 에러코드 반환을 정확하게 할 수 있음.
         };
 
@@ -78,5 +83,13 @@ const log = (response, url) => {
         logger.info(
             `${url.method} ${url.path} ${url. status} Response: ${response.success} ${response.msg || ""}`
         );
+    }
+}
+
+function authStatus(req, res) {
+    if(req.session.is_logined) {
+        return true;
+    } else {
+        return false;
     }
 }

@@ -14,7 +14,7 @@ class User {
             
             if(user){
                 if(user.id === client.id && user.psword === client.psword){
-                    return {success: true};     
+                    return {success: true, id: user.id, name: user.name};
                 }
                 return {success: false, msg:"비밀번호가 틀렸습니다."};
             }
@@ -31,15 +31,6 @@ class User {
             return response;
         } catch (err) {
             return { success: false, msg: "이미 존재하는 아이디입니다."};
-        }
-    }
-
-    async chat() {
-        const client = this.body;
-        try{
-            return {success: true};
-        } catch (err) {
-            return { success: false, msg: "메세지 전송에 실패했습니다."};
         }
     }
 }
