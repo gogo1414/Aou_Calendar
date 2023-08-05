@@ -13,7 +13,7 @@ async function fetchAIResponse(prompt) {
       // API 요청의 헤더를 설정
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer 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`
+        'Authorization': ``
     },
       body: JSON.stringify({
           model: "gpt-3.5-turbo",  // 사용할 AI 모델
