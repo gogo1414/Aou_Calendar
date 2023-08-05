@@ -42,11 +42,13 @@ const process = {
         const user = new User(req.body);
         const response = await user.login();
 
-        if(req.session.is_logined){
-            console.log("이미 로그인 상태입니다.");
-        } else {
-            req.session.is_logined = true;
-            req.session.user_id = response.id;
+        if(response.success){
+            if(req.session.is_logined){
+                console.log("이미 로그인 상태입니다.");
+            } else {
+                req.session.is_logined = true;
+                req.session.user_id = response.id;
+            }
         }
         const url = {
             method: "POST",

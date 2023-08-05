@@ -13,9 +13,10 @@ const joinBtn = document.querySelector("button");
 joinBtn.addEventListener("click", join);
 
 function join(){
-//     let reg = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
+    let reg = /^[A-Za-z0-9]{6,20}$/;
     if(!id.value) return alert("아이디를 입력해주십시오.");
-    // if(psword.value !== reg) return alert("비밀번호에 영문 숫자 조합 8자리 이상이 포함되도록 입력해주십시오.");
+    if(!id.value.match(reg)) return alert("아이디에 영문 숫자 조합 6자리 이상이 포함되도록 입력해주십시오.");
+    if(!psword.value.match(reg)) return alert("비밀번호에 영문 숫자 조합 6자리 이상이 포함되도록 입력해주십시오.");
     if(psword.value !== confirmPsword.value) return alert("비밀번호가 일치하지 않습니다.");
     if(!name.value) return alert("이름을 입력해주십시오.");
     if(!year.value || !month.value || !day.value) return alert("생년월일을 입력해주십시오.");

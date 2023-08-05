@@ -29,7 +29,8 @@ body{
     display: block;
     margin : auto;
     color: #000000;
-    margin-bottom: 25px;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .member .field{
@@ -46,7 +47,8 @@ body{
 .member input:not(input[type=radio]),.member select{
     padding: 15px;
     width: 100%;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    border: 2px solid black;
     border-radius: 6px;
     background-color: #eaeaea;
 }
@@ -62,6 +64,7 @@ body{
     border: 1px solid #dadada;
     padding: 15px;
     width: 100%;
+    margin-top: 21px;
     margin-bottom: 5px;
     cursor: pointer;
 }

@@ -1,6 +1,7 @@
 const msgerForm = get(".msger-inputarea");
 const msgerInput = get(".msger-input");
 const msgerChat = get(".msger-chat");
+var jsonArray2 = [];
 
 // OpenAI API 엔드포인트 주소를 변수로 저장
 const apiEndpoint = 'https://api.openai.com/v1/chat/completions'
@@ -13,8 +14,8 @@ async function fetchAIResponse(prompt) {
       // API 요청의 헤더를 설정
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': ``
-    },
+        'Authorization': `Bearer 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`
+      },
       body: JSON.stringify({
           model: "gpt-3.5-turbo",  // 사용할 AI 모델
           messages: [
@@ -81,24 +82,25 @@ async function botResponse(message) {
     appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
   }, delay);
 
-  if (window.confirm("달력에 적용하시겠습니까?")) {
-    const jsonArray = [];
-  
-    // 날짜와 일정 분리
-    let lines = msgText.split('\n');
-  
-    // 배열 만들기
-    lines.forEach(line => {
-      let [start, title] = line.split(': ');
-  
-      var jsonObj = {
-        start: start,
-        title: title
-      };
-  
-      jsonArray.push(jsonObj);
-    });
-  }
+  // const jsonArray = [];
+
+  // // 날짜와 일정 분리
+  // let lines = msgText.split('\n');
+
+  // // 배열 만들기
+  // lines.forEach(line => {
+  //   let [start, title] = line.split(': ');
+
+  //   var jsonObj = {
+  //     start: start,
+  //     title: title
+  //   };
+
+  //   jsonArray.push(jsonObj);
+  // });
+  // console.log(jsonArray);
+  // jsonArray2.length = 0;
+  // jsonArray2 = jsonArray
 }
 
 function appendMessage(name, img, side, text) {
