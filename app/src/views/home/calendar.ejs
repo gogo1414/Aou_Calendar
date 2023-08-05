@@ -6,137 +6,67 @@
     <link rel="icon" href="https://github.com/JiyunElizabethYang/Smarcle-Farm/blob/main/KakaoTalk_20230804_152124244.png?raw=true"/>
     <title>Aou Callender</title>
     <link href="/css/home/calendar.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src='https://use.fontawesome.com/releases/v5.0.13/js/all.js'></script>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-          timeZone: 'KOR',
-          navLinks: true,
-          height: 700,
-          width: 800,
-          headerToolbar: {
-            left: 'prev next today',
-            center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay'
-          },
-          initialView: 'dayGridMonth',
-          editable: true,
-          selectable: true,
-          eventBorderColor : '#82d1ff', // 이벤트 테두리색
-             eventBackgroundColor : '#82d1ff' , // 이벤트 배경색
-          eventAdd: function(obj) { // 이벤트가 추가되면 발생하는 이벤트
-            console.log(obj);
-          },
-          eventChange: function(obj) { // 이벤트가 수정되면 발생하는 이벤트
-            console.log(obj);
-          },
-          eventRemove: function(obj){ // 이벤트가 삭제되면 발생하는 이벤트
-            console.log(obj);
-          },  
-          select: function(arg) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
-            var title = prompt('일정 추가:');
-            if (title) {
-              calendar.addEvent({
-                title: title,
-                start: arg.start,
-                end: arg.end,
-                allDay: arg.allDay
-              })
-            }
-            calendar.unselect()
-          },
-          eventClick: function(arg) { // 이벤트 클릭 후 삭제
-            console.log(arg);
-            if(confirm('일정을 삭제하시겠습니까?')){
-              arg.event.remove();
-            }
-          },
-          slotMinTime: '08:00', // Day 캘린더에서 시작 시간
-          slotMaxTime: '22:00', // Day 캘린더에서 종료 시간
-          events: function(info, successCallback, failureCallback) {
-            let eventsArr = [];
-            
-            let newevent = {
-              title: 'Long Event',
-              start: '2023-07-07',
-              end: '2023-07-10'
-              };
-            
-            console.log(jsonArray[0]);
-            
-            for (var i = 0; i < cnt; i++){
-              eventsArr.push(
-              jsonArray[i],
-              );
-            }
-            successCallback(eventsArr);
-          }
-        });
-        calendar.render();
-      });
-
-    </script>
+    <script src="/js/home/calendar.js"></script>
   </head>
-<body style="height: 900px;">
+<body style="height: 900px; background-image: url(https://github.com/tkddhks03/forweb/blob/main/calback.png?raw=true);
+background-attachment: relative;">
   <div>
     <h1 class="scroll_01">
       <img src = "https://github.com/JiyunElizabethYang/Smarcle-Farm/blob/main/AOU%20calendar%20logo.png?raw=true" style="width:400px; height: 75px; display:block; margin-top: -100px;">  
-      <a href="/logout" style="float:right">Logout</a>
       </h1>
     <div id="calendar" class="rap">
     </div>
   </div>
-  <div class="msger">
-    <header class="msger-header">
-      <div class="msger-header-title">
-        <i class="fas fa-comment-alt"></i> AOU Calendar Chatbox
-      </div>
-    </header>
   
-    <main class="msger-chat">
-      <div class="msg left-msg">
-        <div
-         class="msg-img"
-         style="background-image: url(https://github.com/JiyunElizabethYang/Smarcle-Farm/blob/main/Ultron%20image.png?raw=true)"
-        ></div>
-        <div class="msg-bubble">
-          <div class="msg-info">
-            <div class="msg-info-name">ULTRON</div>
-          </div>
+  <div>
+    <a href="/logout" style="float:right" font-size: 20px;>Logout</a>
   
-          <div class="msg-text">
-            반가워! 계획을 지키는 멋진 너가 되길 바랄게~😄
+    <div class="msger">
+      <header class="msger-header">
+        <div class="msger-header-title">
+          <i class="fas fa-comment-alt"></i> AOU Calendar Chatbox
+        </div>
+      </header>
+      <main class="msger-chat">
+        <div class="msg right-msg">
+          <div
+           class="msg-img"
+           style="background-image: url(https://github.com/JiyunElizabethYang/Smarcle-Farm/blob/main/%EB%8F%84%ED%86%A0%EB%A6%AC.jpg?raw=true)"
+          ></div>
+    
+          <div class="msg-bubble">
+            <div class="msg-info">
+              <div class="msg-info-name">ME</div>
+            </div>
+    
+            <div class="msg-text">안녕! 어떤 식으로 적으면 될까?</div>
           </div>
         </div>
-      </div>
-  
-      <div class="msg right-msg">
-        <div
-         class="msg-img"
-         style="background-image: url(https://github.com/JiyunElizabethYang/Smarcle-Farm/blob/main/%EB%8F%84%ED%86%A0%EB%A6%AC.jpg?raw=true)"
-        ></div>
-  
-        <div class="msg-bubble">
-          <div class="msg-info">
-            <div class="msg-info-name">ME</div>
-          </div>
-  
-          <div class="msg-text">
-            ㄳㄳ
+        <div class="msg left-msg">
+          <div
+           class="msg-img"
+           style="background-image: url(https://github.com/JiyunElizabethYang/Smarcle-Farm/blob/main/Ultron%20image.png?raw=true)"
+          ></div>
+          <div class="msg-bubble">
+            <div class="msg-info">
+              <div class="msg-info-name">ULTRON</div>
+            </div>
+    
+            <div class="msg-text">반가워🤗 너가 해야하는 일과 지킬 기간을 함께 적어줘~~ (예시: 8/10부터 8/25까지 토익을 공부할건데 일정을 짜줘!)</div>
           </div>
         </div>
-      </div>
-    </main>
-  
-    <form class="msger-inputarea">
-      <input type="text" class="msger-input" placeholder="할 일과 기간을 함께 입력해주세요...">
-      <button type="submit" class="msger-send-btn">보내기</button>
-    </form>
-  </div>
+    
+      </main>
+      <form class="msger-inputarea">
+        <input type="text" class="msger-input" placeholder="할 일과 기간을 함께 입력해주세요...">
+        <button type="submit" class="msger-send-btn">보내기</button>
+      </form>
+    </div>
+  </div>      
 <script src='https://use.fontawesome.com/releases/v5.0.13/js/all.js'></script>  
-<script src="/js/home/calendar.js"></script>
+<script src="/js/home/chat.js"></script>
 </body>
 </html>

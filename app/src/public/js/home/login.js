@@ -1,4 +1,5 @@
 "use strict";
+// import crypto from ''
 
 const id = document.getElementById('id')
 const psword = document.getElementById('psword');

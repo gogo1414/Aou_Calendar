@@ -37,7 +37,8 @@ app.use(session({
     secret: process.env.sessionKey,
     resave: false,
     saveUninitialized:true,
-    store: sessionStore
+    store: sessionStore,
+    port: 3306
 }));
 
 // URL을 통해 전달되는 데이터에 한글, 공백 등과 

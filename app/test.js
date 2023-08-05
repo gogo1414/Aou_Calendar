@@ -1,17 +1,17 @@
-const cryptojs = require("crypto-js");
+// const cryptojs = require("crypto-js");
 
-const string = 'this is my password'
+// const string = 'this is my password'
 
-//1. 단순 해싱으로 비밀번호 해싱
-let hashAlgorithm = cryptojs.createHash('sha512'); // sha512 암호 알고리즘 사용
+// //1. 단순 해싱으로 비밀번호 해싱
+// let hashAlgorithm = cryptojs.createHash('sha512'); // sha512 암호 알고리즘 사용
 
-//선택된 알고리즘으로 해싱
-let hashing = hashAlgorithm.update(string);
+// //선택된 알고리즘으로 해싱
+// let hashing = hashAlgorithm.update(string);
       
-//표시할 인코딩 설정. 
-let hashedString = hashing.digest('base64');
+// //표시할 인코딩 설정. 
+// let hashedString = hashing.digest('base64');
 
-console.log(hashedString);
+// console.log(hashedString);
 
 // // 암호화 처리하는데 시간 걸리니까 비동기로 처리
 // const createSalt = () =>
@@ -48,39 +48,33 @@ console.log(hashedString);
 // 소금도 반환하는 이유는, 각 유저의 비밀번호 암호화하는데
 //  사용된 소금 종류가 다르기 때문에, 각 유저마다 소금을 가지고있어야 비교가 가능하다.
 
-// const jsonArray = new Array();
+msgText=
+`2023-08-08: Grammar study
+2023-08-09: Reading practice
+2023-08-10: Writing practice
+2023-08-11: Listening learning to improve English listening skills
+2023-08-12: Grammar and vocabulary review`
 
+if (true) {
+  const jsonArray = [];
 
-// let str = `2023-07-01, 롤 티어 그랜드마스터 달성을 위한 전략과 팁을 인터넷에서 조사
-// 2023-07-02, 롤 티어 그랜드마스터 선수들의 게임 플레이를 분석하고 배울 점을 찾아내기
-// 2023-07-03, 롤 티어 그랜드마스터를 달성한 유저들의 인터뷰 및 경험 공유 영상 시청
-// 2023-07-04, 롤 티어 그랜드마스터를 위한 챔피언 및 룬 조합에 대한 정보 수집
-// 2023-07-05, 롤 티어 그랜드마스터를 위한 각 챔피언의 플레이 스타일 파악 및 승률 확인
-// 2023-07-06, 롤 티어 그랜드마스터에 도달하기 위한 효율적인 플레이 방법 학습
-// 2023-07-07, 롤 티어 그랜드마스터에 도달한 선수들의 게임 녹화 영상 시청 및 분석
-// 2023-07-08, 롤 티어 그랜드마스터 도전을 위한 팀원 모집 및 소통 방법 찾아보기
-// 2023-07-09, 롤 티어 그랜드마스터에 도달한 유저들의 블로그나 포스트 읽어보기
-// 2023-07-10, 롤 티어 그랜드마스터를 위한 효율적인 연습 방법과 시간 관리 방법 조사
-// 2023-07-11, 롤 티어 그랜드마스터 도전을 위한 전략 논의를 위한 온라인 모임 참여
-// 2023-07-12, 롤 티어 그랜드마스터를 위한 승률 추이와 롱론 분석 자료 조사
-// 2023-07-13, 롤 티어 그랜드마스터를 달성한 선수들의 인터뷰와 플레이 스타일 비교
-// 2023-07-14, 롤 티어 그랜드마스터에 도달하기 위한 팀원들과의 연습 일정 조율`
+  // Separate date and schedule by splitting based on newline character
+  let lines = msgText.split('\n');
 
-// // 특정 문자 기준으로 잘라 날짜와 일정 분리
-// let substrings = str.split(/[,,\n]/);
-// // 계획 날짜 갯수 
-// let cnt = str.split(',').length-1;
+  // Create a list to put in the event
+  lines.forEach(line => {
+    let [start, title] = line.split(': ');
 
-// // 이벤트에 넣을 리스트 생성
-// for(let i=0; i < cnt; i++){
-//     var jsonObj = new Object();
+    var jsonObj = {
+      start: start,
+      title: title
+    };
 
-//     jsonObj.start = substrings[i++];
-//     jsonObj.title = substrings[i++];
+    jsonArray.push(jsonObj);
+  });
 
-//     jsonObj = JSON.stringify(jsonObj);
-//     jsonArray.push(JSON.parse(jsonObj));
-// }
+  console.log(jsonArray);
+}
 
 // <!DOCTYPE html>
 // <html lang="ko">

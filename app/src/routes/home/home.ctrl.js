@@ -25,12 +25,13 @@ const output = {
     },
 
     logout: (req,res) =>{
-        req.session.destroy((err) => {
+        delete req.session.is_logined;
+        req.session.save((err) => {
             if(err){
-                console.log("세션 삭제에 오류 존재");
+                console.log("세션 저장에 오류 존재");
                 return;
             }
-            logger.info('Get /logout 200 "로그아웃 중입니다."')
+            logger.info('Get /logout 200 "로그아웃 중입니다."');
             res.redirect("/login");
         })
     }
