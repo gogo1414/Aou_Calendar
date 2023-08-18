@@ -15,15 +15,6 @@ $(document).ready(function() {
     selectable: true,
     BorderColor : "#82d1ff", // 이벤트 테두리색
     BackgroundColor : "#82d1ff" , // 이벤트 배경색
-    eventAdd: function(obj) { // 이벤트가 추가되면 발생하는 이벤트
-      console.log(obj);
-    },
-    eventChange: function(obj) { // 이벤트가 수정되면 발생하는 이벤트
-      console.log(obj);
-    },
-    eventRemove: function(obj){ // 이벤트가 삭제되면 발생하는 이벤트
-      console.log(obj);
-    },  
     select: function(arg) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
       var title = prompt('일정 추가:');
       if (title) {
@@ -37,7 +28,6 @@ $(document).ready(function() {
       calendar.unselect()
     },
     eventClick: function(arg) { // 이벤트 클릭 후 삭제
-      console.log(arg);
       if(confirm('일정을 삭제하시겠습니까?')){
         arg.event.remove();
       }
