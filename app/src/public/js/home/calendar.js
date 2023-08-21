@@ -1,3 +1,6 @@
+// chatgpt로 일정 생성 후에 
+// 데이터베이스에 저장하고 그 다음에 달력에 넣는 순서로 진행해야함
+
 $(document).ready(function() {
   var calendarEl = document.getElementById('calendar');
   var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -35,17 +38,17 @@ $(document).ready(function() {
     slotMinTime: '08:00', // Day 캘린더에서 시작 시간
     slotMaxTime: '22:00', // Day 캘린더에서 종료 시간
     
-    // events: function(info, successCallback, failureCallback) {
-    //   let eventsArr = [];
-    //   if (!jsonArray2) return;
+    events: function(info, successCallback, failureCallback) {
+      let eventsArr = [];
+      if (!jsonArray2) return;
 
-    //   jsonArray2.forEach(element => {
-    //     eventsArr.push(element);
-    //   });
+      jsonArray2.forEach(element => {
+        eventsArr.push(element);
+      });
 
-    //   //calendar.refetchEvents()
-    //   successCallback(eventsArr);
-    // }
+      //calendar.refetchEvents()
+      successCallback(eventsArr);
+    }
   });
   calendar.render();
 }) ;

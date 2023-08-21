@@ -2,6 +2,7 @@ const msgerForm = get(".msger-inputarea");
 const msgerInput = get(".msger-input");
 const msgerChat = get(".msger-chat");
 var jsonArray2 = [];
+var today = new Date();
 
 // OpenAI API 엔드포인트 주소를 변수로 저장
 const apiEndpoint = 'https://api.openai.com/v1/chat/completions'
@@ -14,23 +15,19 @@ async function fetchAIResponse(prompt) {
       // API 요청의 헤더를 설정
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer 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`
+        'Authorization': `Bearer `
       },
       body: JSON.stringify({
           model: "gpt-3.5-turbo",  // 사용할 AI 모델
           messages: [
             // 메시지 역할을 user로 설정, 사용자가 입력한 메시지
-            {role: "user", content: "8월 5일 6일 제주도 여행을 가는데 그 날짜를 피해서 8월 2일부터 8일까지 영어공부 일정좀 만들어줘."},
-            {role: "system", content: "You can create the best schedule in the world and every schedule you create is realistic and almost everyone sees your schedule and thinks it's feasible."},
-            {role: "system", content: "You must answer all your answers in Korean and answer all questions asked to make a schedule in a certain format."},
-            {role: "assistant", content:`2023-08-02: 영어 단어 외우기
-2023-08-03: 일반 동사 적용법
-2023-08-04: 강의 책 파트3 학습
-2023-08-05: 제주도 여행 1일차
-2023-08-06: 제주도 여행 2일차
-2023-08-07: 강조 문법 학습
-2023-08-08: 영어 단어 외우기
-`},
+            {role: "system", content: "You are a Korean expert"},
+            {role: "system", content: "You plan your schedule very well."},
+            {role: "system", content: "You are realistic"},
+            {role: "system", content: `Always keep your answer in the format "Year-Month-Day: Content". For example, 2023-08-21: Memorize English words`},
+            {role: "system", content: "If the other person asks you to make a schedule and doesn't give a date, you always make it based on the current date."},
+            {role: "user", content: "현재 날짜와 시간 알려주세요."},
+            {role: "assistant", content: `today is ${today}`},
             {role: "user", content: prompt}
         ],
           temperature: 0.8, // 모델의 출력 다양성
@@ -82,25 +79,25 @@ async function botResponse(message) {
     appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
   }, delay);
 
-  // const jsonArray = [];
+  const jsonArray = [];
 
-  // // 날짜와 일정 분리
-  // let lines = msgText.split('\n');
+  // 날짜와 일정 분리
+  let lines = msgText.split('\n');
 
-  // // 배열 만들기
-  // lines.forEach(line => {
-  //   let [start, title] = line.split(': ');
+  // 배열 만들기
+  lines.forEach(line => {
+    let [start, title] = line.split(': ');
 
-  //   var jsonObj = {
-  //     start: start,
-  //     title: title
-  //   };
+    var jsonObj = {
+      start: start,
+      title: title
+    };
 
-  //   jsonArray.push(jsonObj);
-  // });
-  // console.log(jsonArray);
-  // jsonArray2.length = 0;
-  // jsonArray2 = jsonArray
+    jsonArray.push(jsonObj);
+  });
+  console.log(jsonArray);
+  jsonArray2.length = 0;
+  jsonArray2 = jsonArray
 }
 
 function appendMessage(name, img, side, text) {

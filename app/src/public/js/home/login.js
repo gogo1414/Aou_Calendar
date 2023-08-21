@@ -14,7 +14,7 @@ function login(){
         id: id.value,
         psword: psword.value,
     };
-    
+
     fetch("/login", {
         method: "POST",
         headers: {
@@ -27,6 +27,7 @@ function login(){
             location.href = "/calendar";
         } else{
             if(res.err) return alert(res.err);
+            console.log(res.msg);
             alert(res.msg);
         }
     })

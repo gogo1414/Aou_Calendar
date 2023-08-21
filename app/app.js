@@ -34,9 +34,13 @@ app.use(express.static(`${__dirname}/src/public`));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(session({
+    key: "loginData",
     secret: process.env.sessionKey,
     resave: false,
     saveUninitialized:true,
+    cookie: {
+        expires: 60*60*24,
+    },
     store: sessionStore,
     port: 3306
 }));

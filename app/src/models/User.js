@@ -14,10 +14,9 @@ class User {
         try{
             const user = await UserStorage.getUserInfo(client.id);
 
-            const bytes = CryptoJS.AES.decrypt(user.psword, secretKey);
-            const psword = bytes.toString(CryptoJS.enc.Utf8);
-
             if(user){
+                const bytes = CryptoJS.AES.decrypt(user.psword, secretKey);
+                const psword = bytes.toString(CryptoJS.enc.Utf8);
                 if(user.id === client.id && psword === client.psword){
                     
                     return {success: true, id: user.id, name: user.name};
