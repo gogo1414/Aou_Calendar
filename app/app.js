@@ -23,8 +23,12 @@ const options = {
 const sessionStore = new MySQLStore(options);
 
 const app = express();
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    credentials:true,
+}
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.static('public'));
 
 // 앱세팅

@@ -25,6 +25,7 @@
     "express-session": "^1.17.3",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
+    "sweetalert": "^2.1.2",
     "winston": "^3.10.0"
   }
 }

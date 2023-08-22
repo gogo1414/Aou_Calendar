@@ -2,6 +2,7 @@
 
 const logger = require("../../config/logger");
 const User = require("./../../models/User");
+const db = require("../../config/db");
 
 const output = {
     login: (req, res) => {
@@ -25,7 +26,6 @@ const output = {
     },
 
     logout: (req,res) =>{
-        // delete req.session.is_logined;
         req.session.destroy((err) => {
             if(err){
                 console.log("세션 삭제에 오류 존재");
@@ -34,6 +34,17 @@ const output = {
             logger.info('Get /logout 200 "로그아웃 중입니다."');
             res.redirect("/login");
         })
+    },
+
+    getEvents: (req, res) => {
+        const query = 'SELECT * FROM userSchedule'
+        db.query(query, (err, results) => {
+            if(err) {
+                console.error(err);
+                return res.status(500).json({ error: '데이터베이스 오류'});
+            }
+            res.json(results);
+        });
     }
 };
 
@@ -78,11 +89,40 @@ const process = {
         log(response, url);
         return res.status(url.status).json(response);
     },
+
+    saveEvents: async (req, res) => {
+        const user = new User(req.body);
+        const response = await user.saveSchedule();
+
+        const url = {
+            method: "POST",
+            path: "/saveEvents",
+            status: response.err ? 400: 201,
+        };
+        log(response, url);
+        return res.status(url.status).json(response);
+    }
+};
+
+const remove = {
+    deleteEvents: async (req, res) => {
+        const user = new User(req.body);
+        const response = await user.deleteSchedule();
+
+        const url = {
+            method: "DELETE",
+            path: "/deleteEvents",
+            status: response.err ? 400: 201,
+        };
+        log(response, url);
+        return res.status(url.status).json(response);
+    }
 };
 
 module.exports = {
     output,
     process,
+    remove,
 };
 
 const log = (response, url) => {

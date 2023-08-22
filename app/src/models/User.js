@@ -42,6 +42,28 @@ class User {
             return { success: false, msg: "이미 존재하는 아이디입니다."};
         }
     }
+
+    async saveSchedule() {
+        const schedules = this.body;
+        
+        try {
+            const response = await UserStorage.saveSchedule(schedules);
+            return response;
+        } catch (err) {
+            return { success: false, msg: "저장에 실패했습니다.."};
+        }
+    }
+
+    async deleteSchedule() {
+        const schedule = this.body;
+
+        try {
+            const response = await UserStorage.deleteSchedule(schedule);
+            return response;
+        } catch (err) {
+            return { success: false, msg : "삭제에 실패했습니다."};
+        }
+    }
 }
 
 module.exports = User;
